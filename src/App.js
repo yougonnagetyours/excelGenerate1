@@ -43,29 +43,39 @@ class Download extends React.Component {
 
   handleAcceptButton = () =>{
 
-    const width = parseInt(this.state.internalWidth);
-    const depth = parseInt(this.state.internalDepth);
+    const width = parseInt(this.state.internalWidth)-7; //substract for velcro
+    const depth = parseInt(this.state.internalDepth)-7; //substract for velcro
     const height = parseInt(this.state.internalHeight);
+
+    const stitching = 7;        //straight value
+    const stitchingToBott = 7;  //straight value
+    const foldingSides = 20;    //straight value
+    const folding = 12;         //straight value
 
     const bottom = {
       function: 'bottom',
-      dim1: width+14,
-      dim2: depth+14,
+      dim1: width+stitching*2,
+      dim2: depth+stitching*2,
     }
     const longSide = {
       function: 'long side',
-      dim1: width+14,
-      dim2: height+20+7,
+      dim1: width+stitching*2,
+      dim2: height+foldingSides+stitchingToBott,
     }
     const shortSide = {
       function: 'short side',
-      dim1: depth+14,
-      dim2: height+20+7,
+      dim1: depth+stitching*2,
+      dim2: height+foldingSides+stitchingToBott,
     }
     const vertical = {
       function: 'vertical',
       dim1: width+14,
-      dim2: height+12+7,
+      dim2: height+folding+stitchingToBott,
+    }
+     const divider = {
+      function: 'divider',
+      dim1: depth+14,
+      dim2: height+folding+stitchingToBott,
     }
     
     this.setState({
@@ -74,6 +84,7 @@ class Download extends React.Component {
       {...longSide},
       {...shortSide},
       {...vertical},
+      {...divider},
     ]
     })
   }
