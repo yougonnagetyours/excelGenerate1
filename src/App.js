@@ -42,18 +42,31 @@ class Download extends React.Component {
   }
 
   handleAcceptButton = () =>{
+
+    const width = parseInt(this.state.internalWidth);
+    const depth = parseInt(this.state.internalDepth);
+    const height = parseInt(this.state.internalHeight);
+
+    const bottom = {
+      function: 'bottom',
+      dim1: width+7,
+      dim2: depth+7,
+    }
+    const longSide = {
+      function: 'long side',
+      dim1: width+7,
+      dim2: height+20,
+    }
+    const shortSide = {
+      function: 'short side',
+      dim1: depth+7,
+      dim2: height+20,
+    }
     this.setState({
       dataSet1: [
-      {
-        function: 'bottom',
-        dim1: this.state.internalWidth+7,
-        dim2: this.state.internalDepth,
-      },
-      {
-        function: 'bottom',
-        dim1: this.state.internalWidth,
-        dim2: this.state.internalDepth,
-      }
+      {...bottom},
+      {...longSide},
+      {...shortSide},
     ]
     })
   }
