@@ -49,24 +49,31 @@ class Download extends React.Component {
 
     const bottom = {
       function: 'bottom',
-      dim1: width+7,
-      dim2: depth+7,
+      dim1: width+14,
+      dim2: depth+14,
     }
     const longSide = {
       function: 'long side',
-      dim1: width+7,
-      dim2: height+20,
+      dim1: width+14,
+      dim2: height+20+7,
     }
     const shortSide = {
       function: 'short side',
-      dim1: depth+7,
-      dim2: height+20,
+      dim1: depth+14,
+      dim2: height+20+7,
     }
+    const vertical = {
+      function: 'vertical',
+      dim1: width+14,
+      dim2: height+12+7,
+    }
+    
     this.setState({
       dataSet1: [
       {...bottom},
       {...longSide},
       {...shortSide},
+      {...vertical},
     ]
     })
   }
