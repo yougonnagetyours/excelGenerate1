@@ -64,15 +64,21 @@ class Download extends React.Component {
     const matrixDepth = parseInt(this.state.matrixWidth);
     const matrixHeight = parseInt(this.state.matrixWidth);
 
+    let divider = {};
+
     const stitching = 7;        //straight value
     const stitchingToBott = 7;  //straight value
     const foldingSides = 20;    //straight value
     const folding = 12;         //straight value
-    const verticalWidth = 0;
+    let verticalWidth = 0;
+    let divQuantity = 0;
+    let vertQuantity = 0;
     
     //checking matrix values
     if (matrixWidth == 0) {
-      verticalWidth = width+stitching*2
+      verticalWidth = width+stitching*2;
+      divQuantity = 0;
+      vertQuantity = matrixDepth-1; //optimize
     }
 
     const bottom = {
@@ -85,21 +91,27 @@ class Download extends React.Component {
       function: 'long side',
       dim1: width+stitching*2,
       dim2: height+foldingSides+stitchingToBott,
+      quantity: ''
     }
     const shortSide = {
       function: 'short side',
       dim1: depth+stitching*2,
       dim2: height+foldingSides+stitchingToBott,
+      quantity: ''
     }
     const vertical = {
       function: 'vertical',
       dim1: width+stitching*2,
       dim2: height+folding+stitchingToBott,
+      quantity: ''
     }
-     const divider = {
-      function: 'divider',
-      dim1: depth+14,
-      dim2: height+folding+stitchingToBott,
+    if (matrixWidth){
+      divider = {
+        function: 'divider',
+        dim1: depth+stitching*2,
+        dim2: height+folding+stitchingToBott,
+        quantity: matrixWidth-1
+      }
     }
     
     this.setState({
