@@ -138,6 +138,7 @@ class Download extends React.Component {
     render() {
         return (
           <div className="wrapper"> 
+            <h1 className='tittle'>fitbox bom generator</h1>
             <div className="form-group internal-width">
                 <label htmlFor="iw">Internal width</label>
                 <input type="number" id="iw" className="form-control" value={this.state.internalWidth} onChange={this.handleIWChange}/>
