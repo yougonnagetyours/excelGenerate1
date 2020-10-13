@@ -1,6 +1,36 @@
 .wrapper{
+  margin-top: 50px;
   padding: 20px;
 }
 .accept{
   margin-right: 20px;
+}
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.form-group label {
+  /* width: 100px; */
+  margin-right: 20px;
+}
+.form-group input {
+  width: 200px;
+}
+
+.matrix {
+  display: flex;
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-bottom: 30px;
+}
+.matrix label {
+  /* width: 200px; */
+  margin-left: 20px;
+}
+.matrix input {
+  width: 85px;
+  margin: 0 10px;
 }
