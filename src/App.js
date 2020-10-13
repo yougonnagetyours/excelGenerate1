@@ -13,32 +13,45 @@ class Download extends React.Component {
     internalWidth: null,
     internalDepth: '',
     internalHeight: '',
+    matrixWidth: '',
+    matrixDepth: '',
+    matrixHeight: '',
     dataSet1: [
-      {
-        function: '',
-        dim1: '',
-        dim2: '',
-      }
+      {}
     ]
   }
-
+// handlers
+// Dimensions
   handleIWChange = (e) =>{
     this.setState({
       internalWidth: e.target.value
     })
-    console.log('click')
   }
   handleIDChange = (e) =>{
     this.setState({
       internalDepth: e.target.value
     })
-    console.log('click')
   }
   handleIHChange = (e) =>{
     this.setState({
       internalHeight: e.target.value
     })
-    console.log('click')
+  }
+  // Matrix
+  handleMatrixWidthChange = (e) =>{
+    this.setState({
+      matrixWidth: e.target.value
+    })
+  }
+   handleMatrixDepthChange = (e) =>{
+    this.setState({
+      matrixDepth: e.target.value
+    })
+  }
+   handleMatrixHeightChange = (e) =>{
+    this.setState({
+      matrixHeight: e.target.value
+    })
   }
 
   handleAcceptButton = () =>{
@@ -47,15 +60,26 @@ class Download extends React.Component {
     const depth = parseInt(this.state.internalDepth)-7; //substract for velcro
     const height = parseInt(this.state.internalHeight);
 
+    const matrixWidth = parseInt(this.state.matrixWidth);
+    const matrixDepth = parseInt(this.state.matrixWidth);
+    const matrixHeight = parseInt(this.state.matrixWidth);
+
     const stitching = 7;        //straight value
     const stitchingToBott = 7;  //straight value
     const foldingSides = 20;    //straight value
     const folding = 12;         //straight value
+    const verticalWidth = 0;
+    
+    //checking matrix values
+    if (matrixWidth == 0) {
+      verticalWidth = width+stitching*2
+    }
 
     const bottom = {
       function: 'bottom',
       dim1: width+stitching*2,
       dim2: depth+stitching*2,
+      quantity: ''
     }
     const longSide = {
       function: 'long side',
@@ -69,7 +93,7 @@ class Download extends React.Component {
     }
     const vertical = {
       function: 'vertical',
-      dim1: width+14,
+      dim1: width+stitching*2,
       dim2: height+folding+stitchingToBott,
     }
      const divider = {
@@ -97,11 +121,17 @@ class Download extends React.Component {
             </div>
             <div className="form-group">
                 <label htmlFor="id">Internal depth</label>
-                <input type="text" id="id" className="form-control" value={this.state.internalDepth} onChange={this.handleIDChange}/>
+                <input type="number" id="id" className="form-control" value={this.state.internalDepth} onChange={this.handleIDChange}/> 
             </div>
             <div className="form-group">
                 <label htmlFor="ih">Internal height</label>
-                <input type="text" id="ih" className="form-control" value={this.state.internalHeight} onChange={this.handleIHChange}/>
+                <input type="number" id="ih" className="form-control" value={this.state.internalHeight} onChange={this.handleIHChange}/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="matrix">Matrix</label>
+                <input type="number" id="matrix" className="form-control matrix-width" value={this.state.matrixWidth} onChange={this.handleMatrixWidthChange}/>
+                <input type="number" id="matrix" className="form-control matrix-depth" value={this.state.matrixDepth} onChange={this.handleMatrixDepthChange}/>
+                <input type="number" id="matrix" className="form-control matrix-height" value={this.state.matrixHeight} onChange={this.handleMatrixHeightChange}/>
             </div>
             <button className="accept" onClick={this.handleAcceptButton}>Accept</button>
             <ExcelFile element={<button>Download Data</button>}>
