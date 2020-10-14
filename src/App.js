@@ -138,7 +138,7 @@ class Download extends React.Component {
     render() {
         return (
           <div className="wrapper"> 
-            <h1 className='tittle'>fitbox bom generator</h1>
+            <h1 className='tittle'></h1>
             <div className="form-group internal-width">
                 <label htmlFor="iw">Internal width</label>
                 <input type="number" id="iw" className="form-control" value={this.state.internalWidth} onChange={this.handleIWChange}/>
@@ -156,6 +156,25 @@ class Download extends React.Component {
                 <input type="number" id="matrix" className="form-control matrix-width" value={this.state.matrixWidth} onChange={this.handleMatrixWidthChange}/>
                 <input type="number" id="matrix" className="form-control matrix-depth" value={this.state.matrixDepth} onChange={this.handleMatrixDepthChange}/>
                 <input type="number" id="matrix" className="form-control matrix-height" value={this.state.matrixHeight} onChange={this.handleMatrixHeightChange}/>
+            </div>
+            <div className="arrangement">
+              <div className="tittle-container">
+                <p>Arrangement of pockets</p>
+              </div>
+              <div className="checkbox-container">
+                <div>
+                  <input type="radio" id="radio1" className="radio"/>
+                  <label htmlFor="radio1">Verticals on long side</label>
+                </div>
+                <div>
+                  <input type="radio" id="radio2" className="radio"/>
+                  <label htmlFor="radio2">Verticals on short side </label>
+                </div>
+                <div>
+                  <input type="radio" id="radio3" className="radio"/>
+                  <label htmlFor="radio3">"Snake"</label>
+                </div>
+              </div>
             </div>
             <button className="accept" onClick={this.handleAcceptButton}>Accept</button>
             <ExcelFile element={<button>Download Data</button>}>
