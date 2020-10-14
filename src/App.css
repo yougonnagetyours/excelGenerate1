@@ -43,3 +43,8 @@
 .checkbox-container{
   margin: 20px auto;
 }
+
+.checkbox-container label{
+  /* display: block; */
+  margin-left: 20px;
+}
